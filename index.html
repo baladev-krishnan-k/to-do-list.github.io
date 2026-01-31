@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <style>
+    body{
+        padding-top: 50px;
+        padding-left: 500px;
+        padding-right: 500px;
+        font-size: larger;
+        background-color: antiquewhite;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .done{
+        text-decoration: line-through;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.195);
+        padding: 6px;
+        border-radius: 3px;
+        margin: 3px;
+    }.done span{
+        text-decoration: none;
+    }
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0%;
+    }#into,#mee{
+        font-size: larger;
+    }ul{
+        padding: 10px;
+        font-size: larger;
+    }li {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 5px;
+        
+    }li:hover {
+        background-color: #e6f0ff;
+        cursor: pointer;
+    }
+
+    #max{
+        display: flex;
+        flex-direction: column;
+        background-color: aliceblue;
+        border-radius: 10px;
+        padding: 10px;
+    }#got{
+        display: flex;
+        justify-content: center;
+    }span{
+        color: red;
+        padding: 3px;
+        border-radius: 2px;
+    }
+    span:hover{
+        color: white;
+        background-color: red;
+        padding-left: 5px;
+        padding-right: 5px;
+        
+    }#mee{
+        border: none;
+        border-radius: 3px;
+    }#into{
+        border: none;
+        border-radius: 2px;
+    }#mee:hover{
+        background-color: aquamarine;
+    }
+  </style>
+</head>
+
+<body>
+    <div id="max">
+    <div id="got">
+    <input id="into" placeholder="Enter">
+    <button onclick=addfunc() id="mee">Add</button>
+    </div>
+    <ul id="list"></ul>
+    </div>
+    <script>
+        const into=document.getElementById("into");
+        const list=document.getElementById("list");
+        function addfunc(){
+            if (into.value.trim() === ""){
+                alert("Please enter a task");
+                return;
+            }
+            const li=document.createElement("li");
+            li.innerText=into.value;
+            li.onclick = function () {
+                li.classList.toggle("done");
+            };
+            const del=document.createElement("span");
+            del.innerText="x";
+            del.onclick=function(e){
+                e.stopPropagation();
+                li.remove();
+            };
+            li.appendChild(del);
+            list.appendChild(li);
+            into.value="";
+            
+        }
+    </script>
+</body>
+</html>
